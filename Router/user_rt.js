@@ -7,6 +7,7 @@ const auth =require('../middleware/auth')
 const multer = require('multer')
 const formdata = multer()
 const path = require("path");
+const passport = require('passport');
 
 const makeid=()=>{
     let text = "";
@@ -71,4 +72,8 @@ router.get('/userlist/sort/:sortby/:sortwith',userlist.get_userbysort)
 //pagger
 router.get('/userlist/pagger/:page',userlist.get_userlist_pagger)
 
+//Twitter login
+// router.get('/twitter', userctr.login_twitter)
+// router.get('/twitter/callback', userctr.login_twitter_collback)
+router.get('/login/twitter', passport.authenticate('twitter'));
 module.exports = router
